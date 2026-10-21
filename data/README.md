@@ -31,13 +31,11 @@ Cada fila representa una película en tendencia.
 |---|---|
 | `id` | Identificador numérico de la película |
 | `title` | Título de la película |
-| `original_language` | Código de idioma original (dos letras, por ejemplo `en`, `es`) |
 | `vote_average` | Valoración media |
 | `vote_count` | Cantidad de votos recibidos |
 | `popularity` | Índice de popularidad |
 
-Las columnas `original_title`, `overview` y `adult` existen en el original,
-pero no se utilizan en esta versión.
+Las columnas `original_language`, `original_title`, `overview` y `adult` existen en el archivo original, pero no se utilizan en esta versión.
 
 ## Tamaño
 

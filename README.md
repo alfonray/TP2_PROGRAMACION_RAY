@@ -26,9 +26,8 @@ Desde un menú en la pantalla, el usuario podrá:
 
 1. Cargar el catálogo desde un archivo CSV o JSON.
 2. Buscar películas escribiendo parte de su título.
-3. Filtrar las películas por su idioma original.
-4. Definir el número mínimo de votos requeridos.
-5. Armar la lista ordenada y guardarla en un archivo nuevo.
+3. Definir el número mínimo de votos requeridos.
+4. Armar la lista ordenada y guardarla en un archivo nuevo.
 
 ## Resultado
 
@@ -39,9 +38,9 @@ Esta lista funciona como un ranking de películas **bien calificadas y con respa
 
 ## Alcance de la primera versión
 
-**Qué incluye:** lectura de archivos CSV y JSON, revisión y limpieza de errores (guardando los descartes), búsqueda por título, filtro por idioma, ajuste de votos mínimos y guardado de resultados.
+**Qué incluye:** lectura de archivos CSV y JSON, revisión y limpieza de errores (guardando los descartes), búsqueda por título, ajuste de votos mínimos y guardado de resultados.
 
-**Qué queda afuera:** filtros por género o año (este conjunto de datos no trae esos campos), aplicaciones web o interfaces gráficas, y recomendaciones con inteligencia artificial.
+**Qué queda afuera:** filtro por idioma original, filtros por género o año (este conjunto de datos no trae esos campos), aplicaciones web o interfaces gráficas, y recomendaciones con inteligencia artificial.
 
 ## Datos
 
