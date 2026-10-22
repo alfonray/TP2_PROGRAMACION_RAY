@@ -84,3 +84,30 @@ def validar_y_limpiar_datos(datos):
         validas.append(pelicula)
 
     return validas, rechazados
+
+
+def clave_orden(pelicula):
+    """Criterio de orden: calificación, luego votos, luego popularidad."""
+    return (pelicula.calificacion, pelicula.votos, pelicula.popularidad)
+
+
+def filtrar_catalogo(peliculas, min_votos=50, min_calificacion=0):
+    """Filtra las películas y las ordena de mejor a peor.
+
+    - Se quedan solo las que tienen al menos min_votos votos y una
+      calificación mayor o igual a min_calificacion.
+    - Se ordenan por calificación (de mayor a menor). Si empatan, desempata
+      la cantidad de votos y luego la popularidad.
+    """
+    if min_votos < 0:
+        raise ValueError("El mínimo de votos no puede ser negativo.")
+    if not 0 <= min_calificacion <= 10:
+        raise ValueError("La calificación mínima debe estar entre 0 y 10.")
+
+    seleccionadas = []
+    for pelicula in peliculas:
+        if pelicula.tiene_respaldo(min_votos) and pelicula.calificacion >= min_calificacion:
+            seleccionadas.append(pelicula)
+
+    seleccionadas.sort(key=clave_orden, reverse=True)
+    return seleccionadas
