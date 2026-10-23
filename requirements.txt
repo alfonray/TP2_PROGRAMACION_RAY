@@ -1,1 +1,1 @@
-pandas
+# No se requieren librerías externas. El proyecto utiliza exclusivamente módulos estándar de Python 3.
