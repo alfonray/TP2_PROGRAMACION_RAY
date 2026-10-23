@@ -1,5 +1,6 @@
 """Validación, limpieza y filtrado del catálogo de películas."""
 
+import csv
 import re
 
 # El id es un número entero escrito solo con dígitos (por ejemplo: 1338799).
@@ -111,3 +112,49 @@ def filtrar_catalogo(peliculas, min_votos=50, min_calificacion=0):
 
     seleccionadas.sort(key=clave_orden, reverse=True)
     return seleccionadas
+def guardar_resultado(peliculas, ruta):
+    """Guarda la lista final de películas en un archivo CSV."""
+    columnas = ["id", "titulo", "idioma", "calificacion", "votos", "popularidad"]
+
+    filas = []
+    for p in peliculas:
+        fila = {
+            "id": p.id_pelicula,
+            "titulo": p.titulo,
+            "idioma": p.idioma,
+            "calificacion": p.calificacion,
+            "votos": p.votos,
+            "popularidad": p.popularidad,
+        }
+        filas.append(fila)
+
+    try:
+        with open(ruta, mode="w", encoding="utf-8", newline="") as archivo:
+            escritor = csv.DictWriter(archivo, fieldnames=columnas)
+            escritor.writeheader()
+            escritor.writerows(filas)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"No se pudo guardar en {ruta}: la carpeta no existe.")
+
+
+def guardar_rechazos(rechazados, ruta):
+    """Guarda las filas rechazadas, con el motivo, en un archivo CSV."""
+    columnas = ["id", "titulo", "motivo"]
+
+    filas = []
+    for rechazo in rechazados:
+        original = rechazo["fila"]
+        fila = {
+            "id": original.get("id", ""),
+            "titulo": original.get("title", ""),
+            "motivo": rechazo["motivo"],
+        }
+        filas.append(fila)
+
+    try:
+        with open(ruta, mode="w", encoding="utf-8", newline="") as archivo:
+            escritor = csv.DictWriter(archivo, fieldnames=columnas)
+            escritor.writeheader()
+            escritor.writerows(filas)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"No se pudo guardar en {ruta}: la carpeta no existe.")
